@@ -30,6 +30,7 @@ gem 'validates_overlap'
 gem 'figaro'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "mini_magick"
+gem 'braintree'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth'
