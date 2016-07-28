@@ -1,0 +1,25 @@
+<h1>My reservations</h1>
+<p><%= 'You have no reservations' if current_user.reservations.empty? %></p>
+<div class='col-md-offset-1 col-md-10'>
+<table id='listing-index'>
+	<% current_user.reservations.each do |reservation| %>
+	  <tr class='well'>
+      <td>
+      	<div class='listing-index-details'>      	
+	      	<p>Type of room: <%= reservation.listing.room_type %></p>
+	      	<p>Guests limit: <%= reservation.listing.guests_limit %></p>
+	      	<p>Location: <%= reservation.listing.location %></p>
+          <p>Price per night: <%= reservation.listing.price %></p>
+          <p>between <%= reservation.start_date.strftime("%B %d, %Y") %> and <%= reservation.end_date.strftime("%B %d, %Y") %></p> 
+	  			<p><%= link_to 'Change dates', edit_reservation_path(reservation) %> | 
+	  			<%= link_to 'Cancell', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+	  		</div>
+	  	</td>
+	  	<td class='listing-index-image'>
+      	<% reservation.listing.images.each do |image| %>
+        	<%= image_tag(image.thumb.url) %>
+      	<% end %>
+      </td>     
+    </tr>  
+	<% end %>   
+</table>

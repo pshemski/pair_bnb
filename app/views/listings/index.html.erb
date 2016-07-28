@@ -1,0 +1,27 @@
+<h1>My listings</h1>
+<p><%= 'You have no listings' if current_user.listings.empty? %></p>
+<div class='col-md-offset-1 col-md-10'>
+  <table id='listing-index'>
+    <% current_user.listings.each do |listing| %>     
+      <tr class='well'>
+        <td>
+        <div class='listing-index-details'>
+          <p>Type of room: <%= listing.room_type %></p>
+          <p>Guests limit: <%= listing.guests_limit %></p>
+          <p>Location: <%= listing.location %></p>
+          <p>Price per night: <%= listing.price %></p>
+          <p><%= link_to 'Edit', edit_listing_path(listing) %> | 
+          <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+          </div>
+        </td>
+        <td class='listing-index-image'>
+          <p><%= image_tag(listing.images.first.big_thumb) %></p>
+          <% listing.images.each do |image| %>
+            <%= image_tag(image.thumb.url) %>
+          <% end %>
+        </td>
+      </tr>            
+    <% end %>
+  </table> 
+</div>

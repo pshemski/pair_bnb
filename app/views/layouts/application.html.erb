@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <header>
+    <% if signed_in? %>
+      <nav class="navbar navbar-default">
+        <div class='container'>
+          <div class='navbar-header'>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <%= link_to 'PairBnB', root_path, class: 'navbar-brand' %>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class='nav navbar-nav navbar-right'>
+              <li><%= link_to 'Home', root_path %></li>      
+              <li><%= link_to 'Become a host', new_listing_path %></li>
+              <li class="dropdown"><a class='dropdown-toggle' data-toggle='dropdown' href='#'><%= current_user.email %> <span class="caret"></span></a> 
+                <ul class='dropdown-menu'>
+                  <li><%= link_to 'My Reservations', reservations_path %></li>
+                  <li><%= link_to 'My Listings', listings_path %></li>
+                  <li><%= link_to 'My profile', user_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to t(".sign_out"), sign_out_path, method: :delete %></li>
+                </ul></li>
+              <li><%= image_tag(current_user.image.thumb, class: 'user-avatar') %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <% else %>
+      <nav class="navbar navbar-default">
+        <div class='container'>
+          <div class='navbar-header'>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to 'PairBnB', root_path, class: 'navbar-brand' %>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class='nav navbar-nav navbar-right'>
+              <li><%= link_to 'Home', root_path %></li>      
+              <li><%= link_to 'Become a host', new_listing_path %></li>
+              <li><%= link_to t(".sign_up"), sign_up_path %></li>
+              <li><%= link_to t(".sign_in"), sign_in_path %></li>              
+            </ul>
+          </div>  
+        </div>
+      </nav>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <%= image_tag('waterfall.jpg') %>
+            <!-- <img src="assets/images/waterfall.jpg" alt="waterfall"> -->
+            <div class="carousel-caption">
+              <h3></h3>
+              <p></p>
+            </div>
+          </div>       
+          <div class="item">
+          <%= image_tag('maldives.jpg') %>
+            <!-- <img src="images/maldives.jpg" alt="maldives"> -->
+            <div class="carousel-caption">
+              <h3></h3>
+              <p></p>
+            </div>
+          </div>
+          <div class="item">
+          <%= image_tag('england.jpg') %>
+            <!-- <img src="assets/images/england.jpg" alt="england"> -->
+            <div class="carousel-caption">
+              <h3></h3>
+              <p></p>
+            </div>
+          </div>     
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>     
+    <% end %>
+    <div class='text-denger'>
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%=h value %></div>
+      <% end %>
+    </div>
+    <div class='container'>
+      <%= yield %>
+    </div>
+  </header>
+</body>
+</html>

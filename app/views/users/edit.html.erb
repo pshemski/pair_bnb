@@ -1,0 +1,15 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for @user do |form| %>
+    <div class="text-field">
+	  <%= form.label :email %>
+	  <%= form.text_field :email, type: 'email' %>
+	</div>
+	<div class='file-field'>
+		<%= form.label :Upload_image %>
+		<%= form.file_field :image %>
+	</div>	
+  <div class="submit-field">
+    <%= form.submit %>
+  </div>
+<% end %>

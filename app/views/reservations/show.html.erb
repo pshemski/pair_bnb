@@ -1,0 +1,1 @@
+<h4>You have made a reservation on <%= @reservation.listing.room_type %> <%= 'room' if @reservation.listing.room_type != 'bungalow' %> in <%= @reservation.listing.location %> between <%= @reservation.start_date.strftime("%B %d, %Y") %> and <%= @reservation.end_date.strftime("%B %d, %Y") %></h4>

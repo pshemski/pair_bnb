@@ -1,0 +1,26 @@
+<div id='availability'>
+  <%= form_for @reservation do |f| %>
+      <%= f.label :Start_date %>
+      <%= f.date_field :start_date %>
+      <%= f.label :End_date %>
+      <%= f.date_field :end_date %>
+    <%= f.submit 'Check availability' %> 
+  <% end %>
+</div>
+
+<div class='col-md-offset-1 col-md-10'>
+  <table id='listing-index'>
+  <% @listings.reverse.each do |listing| %>
+      <tr class='well'>
+        <td>
+          <div class='listing-index-details'>
+            <p>Type of room: <%= listing.room_type %></p>
+            <p>Location: <%= listing.location %></p>
+            <p><%= link_to 'View Deal', listing_path(listing) %></p>
+          </div>
+        </td>
+        <td class='listing-index-image'><%= image_tag(listing.images.first.big_thumb) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

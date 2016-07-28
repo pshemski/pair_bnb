@@ -1,0 +1,3 @@
+<p><%= current_user.email %> <%= image_tag(current_user.image.thumb, class: 'user-avatar')%></p>
+<p><%= link_to 'Edit my profile', edit_user_path(current_user) %> | 
+<%= link_to 'Delete my profile', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></p>

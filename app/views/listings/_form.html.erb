@@ -1,0 +1,25 @@
+<%= form_for @listing, :html => {:multipart => true} do |f| %>
+	<table>
+		<tr>
+			<td><%= f.label :Type_of_room %></td>
+			<td><%= f.text_field :room_type %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :Guests_limit %></td>
+			<td><%= f.number_field :guests_limit %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :Location %></td>
+			<td><%= f.text_field :location %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :Price_per_night %></td>
+			<td><%= f.number_field :price %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :Upload_image %></td>
+			<td><%= f.file_field :images, multiple: true %></td>
+		</tr>	
+	</table>
+	<%= f.submit %> 
+<% end %>

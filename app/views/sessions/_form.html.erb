@@ -1,0 +1,12 @@
+<%= form_for :session, url: session_path do |form| %>
+    <%= form.text_field :email, type: 'email', placeholder: 'email'%>
+    <%= form.password_field :password, placeholder: 'password' %>
+    <%= form.submit %>
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%= link_to t(".sign_up"), sign_up_path %> |
+      <%= link_to 'Sign In With Facebook', '/auth/facebook' %> |
+    <% end %>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+<% end %>

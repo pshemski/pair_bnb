@@ -1,0 +1,11 @@
+<h1>Your reservation</h1>
+
+<p>You are about to make a reservation on , <%= @reservation.listing.room_type %> <%= 'room' if @reservation.listing.room_type != 'bungalow' %> in <%= @reservation.listing.location %> between <%= @reservation.start_date.strftime("%B %d, %Y") %> and <%= @reservation.end_date.strftime("%B %d, %Y") %></p>
+<p>Please confirm</p>
+<%= form_for @reservation do |f| %>		
+		<%= f.hidden_field :start_date, value: @reservation.start_date %>		
+		<%= f.hidden_field :end_date, value: @reservation.end_date %>
+		<%= f.hidden_field :listing_id, value: @reservation.listing_id %>
+	<%= f.submit 'Confirm' %> 
+<% end %>
+

@@ -1,0 +1,4 @@
+<% @listing = Listing.find(params[:listing_id]) %>
+<h4>You have selected <%= @listing.room_type %> <%= 'room' if @listing.room_type != 'bungalow' %> in <%= @listing.location %> at cost of <%= @listing.price %> per night</h4>
+<p>Please select the dates:</p>
+<%= render 'form' %>
