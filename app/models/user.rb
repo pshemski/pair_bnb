@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :listings, dependent: :destroy
+  has_many :payments, through: :reservations
   has_many :reservations, dependent: :destroy
   has_many :authentications, :dependent => :destroy
   mount_uploader :image, ImageUploader
