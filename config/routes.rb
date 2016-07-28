@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   		post '/confirmation' => 'reservations#confirmation', as: :confirm
   	end
   end
+
+  resources :transactions, only: [:new, :create]
 end
